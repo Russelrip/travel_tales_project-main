@@ -6,14 +6,17 @@ export class CountryService {
     private apiKey: string;
 
     constructor() {
-        const url = process.env.COUNTRY_API_URL;
-        const key = process.env.COUNTRIES_API_KEY;
+        var url = process.env.COUNTRY_API_URL;
+        var key = process.env.COUNTRIES_API_KEY;
 
         if (!url) {
-            throw new Error('COUNTRY_API_URL environment variable is not set');
+            url = "http://localhost:5000/api/v1/countries";
+            // throw new Error('COUNTRY_API_URL environment variable is not set');
         }
         if (!key) {
-            throw new Error('COUNTRIES_API_KEY environment variable is not set');
+            // key = "12917c16-78cf-471b-a586-69402a86e330";
+            key = "af2a0ff2-4fcf-4702-9e7d-1923c4a06a50";
+            // throw new Error('COUNTRIES_API_KEY environment variable is not set');
         }
 
         this.apiBaseUrl = url;
