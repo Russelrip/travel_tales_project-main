@@ -83,10 +83,6 @@ travel_tales_project-main/
 ├── prisma/      # Prisma schema and migrations
 ```
 
-## Contributing
-
-Contributions are welcome! Feel free to fork the repository and submit pull requests.
-
 ## License
 
 This project is licensed under the MIT License.
