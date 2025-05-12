@@ -1,0 +1,75 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model RegisteredUser {
+  id           Int      @id @default(autoincrement())
+  username     String
+  email        String   @unique
+  passwordHash String
+  passwordSalt String
+  createdAt    DateTime @default(now())
+
+  blogPosts BlogPost[]
+  likes     Like[]
+  followers Follow[]   @relation("FollowerRelation")
+  following Follow[]   @relation("FollowingRelation")
+  comments  Comment[]
+}
+
+model BlogPost {
+  id          Int      @id @default(autoincrement())
+  authorId    Int
+  title       String
+  content     String
+  countryName String
+  dateOfVisit DateTime
+  createdAt   DateTime @default(now())
+
+  author  RegisteredUser @relation(fields: [authorId], references: [id])
+  likes   Like[]
+  Comment Comment[]
+}
+
+model Like {
+  id               Int            @id @default(autoincrement())
+  blogPostId       Int
+  registeredUserId Int
+  hasReacted       Boolean
+  createdAt        DateTime       @default(now())
+  blogPost         BlogPost       @relation(fields: [blogPostId], references: [id])
+  registeredUser   RegisteredUser @relation(fields: [registeredUserId], references: [id])
+}
+
+model Follow {
+  id          Int      @id @default(autoincrement())
+  followerId  Int
+  followingId Int
+  isFollowing Boolean
+  createdAt   DateTime @default(now())
+
+  follower  RegisteredUser @relation("FollowerRelation", fields: [followerId], references: [id])
+  following RegisteredUser @relation("FollowingRelation", fields: [followingId], references: [id])
+}
+
+model Comment {
+  id               Int      @id @default(autoincrement())
+  blogPostId       Int
+  registeredUserId Int
+  comment          String
+  createdAt        DateTime @default(now())
+
+  blogPost       BlogPost       @relation(fields: [blogPostId], references: [id])
+  registeredUser RegisteredUser @relation(fields: [registeredUserId], references: [id])
+}
