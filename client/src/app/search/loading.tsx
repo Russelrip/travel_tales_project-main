@@ -1,5 +1,3 @@
-// Replace the empty loading component with a proper loading state
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 export default function Loading() {

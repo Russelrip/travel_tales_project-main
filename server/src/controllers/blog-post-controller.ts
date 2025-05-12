@@ -157,34 +157,6 @@ export const searchPostsByAuthorUsername = async (req: AuthRequest, res: Respons
     }
 };
 
-
-
-// export const getFollowingFeed = async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
-//     try {
-//         const currentUserId = req.user?.userId;
-//         if (!currentUserId) {
-//             res.status(401).json({ success: false, message: "Unauthorized" });
-//             return;
-//         }
-
-//         const { page = 1, pageSize = 10, shuffle = false } = req.query;
-
-//         const posts: BlogPostWithDetailsDTO[] = await blogPostService.getFollowingFeed(
-//             currentUserId,
-//             Number(page),
-//             Number(pageSize),
-//             Boolean(shuffle)
-//         );
-
-//         res.status(200).json({
-//             success: true,
-//             data: posts
-//         });
-//     } catch (error: any) {
-//         next(error);
-//     }
-// };
-
 export const getFollowingFeed = async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
     try {
         const currentUserId = req.user?.userId;
