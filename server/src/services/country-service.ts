@@ -14,8 +14,7 @@ export class CountryService {
             // throw new Error('COUNTRY_API_URL environment variable is not set');
         }
         if (!key) {
-            // key = "12917c16-78cf-471b-a586-69402a86e330";
-            key = "af2a0ff2-4fcf-4702-9e7d-1923c4a06a50";
+            key = "664c039d-4294-438c-94a0-3ffeb4c8e39f";
             // throw new Error('COUNTRIES_API_KEY environment variable is not set');
         }
 
