@@ -13,7 +13,7 @@ blogPostRouter.get("/most-liked", optionalAuthenticate, blogPostController.getMo
 blogPostRouter.get("/most-commented", optionalAuthenticate, blogPostController.getMostCommentedPosts);
 blogPostRouter.get("/following-feed", authenticate, blogPostController.getFollowingFeed);
 // blogPostRouter.get("/:id", authenticate, blogPostController.getBlogPostById);
-blogPostRouter.get("/:id",blogPostController.getBlogPostById);
+blogPostRouter.get("/:id",optionalAuthenticate,blogPostController.getBlogPostById);
 
 // Authenticated Routes
 blogPostRouter.post("/", authenticate, blogPostController.createBlogPost);
