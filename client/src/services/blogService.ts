@@ -148,7 +148,8 @@ export const deleteBlogPost = async (postId: number): Promise<{ success: boolean
 
 export const getBlogPostById = async (postId: number): Promise<BlogPostWithDetailsDTO> => {
     try {
-        const response = await api.get(`${API_URL}/${postId}`, getAuthHeader());
+        //const response = await api.get(`${API_URL}/${postId}`, getAuthHeader());
+        const response = await api.get(`${API_URL}/${postId}`);
         return response.data.data;
     } catch (error: any) {
         throw new Error(error.response?.data?.message || "Failed to fetch blog post");

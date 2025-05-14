@@ -12,7 +12,8 @@ blogPostRouter.get("/recent", optionalAuthenticate, blogPostController.getRecent
 blogPostRouter.get("/most-liked", optionalAuthenticate, blogPostController.getMostLikedPosts);
 blogPostRouter.get("/most-commented", optionalAuthenticate, blogPostController.getMostCommentedPosts);
 blogPostRouter.get("/following-feed", authenticate, blogPostController.getFollowingFeed);
-blogPostRouter.get("/:id", authenticate, blogPostController.getBlogPostById);
+// blogPostRouter.get("/:id", authenticate, blogPostController.getBlogPostById);
+blogPostRouter.get("/:id",blogPostController.getBlogPostById);
 
 // Authenticated Routes
 blogPostRouter.post("/", authenticate, blogPostController.createBlogPost);
