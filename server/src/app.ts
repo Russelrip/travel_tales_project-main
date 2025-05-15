@@ -7,10 +7,10 @@ import followRouter from './routes/follow-routes';
 import commentRouter from './routes/comment-routes';
 import countryRouter from './routes/country-route';
 import likeRouter from './routes/like-routes';
-// import dotenv from 'dotenv';
+import dotenv from 'dotenv';
 import authRouter from './routes/auth-route';
 
-// dotenv.config();
+dotenv.config();
 console.log('COUNTRY_API_URL:', process.env.COUNTRY_API_URL);
 
 const app = express();
